@@ -1,0 +1,36 @@
+# Base image
+FROM docker.io/nvidia/cuda:12.9.1-cudnn-runtime-ubuntu24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install system dependencies and Python tooling
+RUN apt-get update && apt-get install -y \
+    python3-full \
+    python3.12-dev \
+    python3-venv \
+    ffmpeg \
+    git \
+    curl \
+    build-essential \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
+# Create virtualenv
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+WORKDIR /app
+
+# Copy and install dependencies
+COPY requirements.txt .
+
+# Install CUDA-compatible torch stack first
+RUN pip install --upgrade pip && \
+    pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 torchaudio==2.5.1+cu121 --index-url https://download.pytorch.org/whl/cu121
+
+# Then install everything else
+RUN pip install -r requirements.txt
+
+# Optional
+# COPY . .
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: subtitle-api
+    build:
+      context: ./faster-auto-subtitle-docker
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      - TRANSCRIPTION_MODEL=large-v3  # Default model (can be overridden)
+      - HF_HOME=/cache/huggingface    # HuggingFace cache location
+      - TRANSFORMERS_CACHE=/cache/huggingface
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - huggingface_cache:/cache/huggingface
+    restart: unless-stopped
+
+  frontend:
+    container_name: subtitle-frontend
+    build:
+      context: ./faster-auto-subtitle-docker-frontend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  huggingface_cache:

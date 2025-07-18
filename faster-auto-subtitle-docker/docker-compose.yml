@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  subtitle-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: subtitle-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - huggingface-cache:/cache
+    devices:
+      - "/dev/nvidia0:/dev/nvidia0"
+      - "/dev/nvidiactl:/dev/nvidiactl"
+      - "/dev/nvidia-uvm:/dev/nvidia-uvm"
+      - "/dev/nvidia-uvm-tools:/dev/nvidia-uvm-tools"  # Optional, depending on driver setup
+    environment:
+      - TRANSFORMERS_CACHE=/cache/huggingface
+      - HF_HOME=/cache/huggingface
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    restart: unless-stopped
+    # Optional for better logs/debugging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  huggingface-cache:

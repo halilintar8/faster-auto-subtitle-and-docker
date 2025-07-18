@@ -1,0 +1,30 @@
+# Core dependencies
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+python-dotenv==1.0.1
+pydantic==2.7.1
+faster-whisper
+hangul-romanize
+pykakasi
+sentencepiece
+python-multipart
+sacremoses
+
+# Audio/video processing
+ffmpeg-python==0.2.0
+librosa==0.10.1
+soundfile==0.12.1
+numpy==1.26.4
+scipy==1.13.1
+
+# NLP
+transformers==4.41.1
+tokenizers==0.19.1
+torch==2.3.0       # Use +cu121 for GPU CUDA 12.1, see below
+
+# Optional: for Whisper or automatic speech recognition
+openai-whisper==20231117
+
+# File handling / utilities
+tqdm==4.66.4
+requests==2.31.0

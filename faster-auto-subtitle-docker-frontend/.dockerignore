@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Git
+.git/
+.gitignore
+
+# Docker files
+Dockerfile
+docker-compose.yml
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor settings
+*.swp
+*.swo
+.idea/
+.git/
+.vscode/
+
+# Media (optional, if uploading video files locally)
+*.mp4
+*.mkv
+*.mov
+*.avi
+
