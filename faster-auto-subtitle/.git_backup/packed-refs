@@ -1,0 +1,13 @@
+# pack-refs with: peeled fully-peeled sorted 
+ac311a0af0cecacb1ad222022dba2852a0800fc9 refs/remotes/origin/dev
+1f14baba6769ac8f8e6bbf74475dae9214b250e5 refs/remotes/origin/github-workflows
+e9ef61a981a7bab358c90c69611b81e94d4f83b3 refs/remotes/origin/main
+2ddd089b05beaaf9f79222141e98c4ec0a2b80aa refs/remotes/origin/opus-mt-enhancements
+ac311a0af0cecacb1ad222022dba2852a0800fc9 refs/remotes/origin/opus-mt-translation
+11942bb0092cddeaf3ddeca7fd217c5dc5da88eb refs/remotes/origin/processing-folders
+4f61220ae6422e75a395e8af77d60d8fe821851d refs/remotes/origin/upgrade-faster-whisper
+e9ef61a981a7bab358c90c69611b81e94d4f83b3 refs/tags/1.4.0
+1c0cdb6ebad99b213a00029ae7f30822db0638f8 refs/tags/v1.0.0
+ac311a0af0cecacb1ad222022dba2852a0800fc9 refs/tags/v1.1.0
+11942bb0092cddeaf3ddeca7fd217c5dc5da88eb refs/tags/v1.2.0
+4f61220ae6422e75a395e8af77d60d8fe821851d refs/tags/v1.3.0
