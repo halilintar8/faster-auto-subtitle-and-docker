@@ -1,0 +1,8 @@
+
+podman build -f Dockerfile.gpu-base -t my-gpu-base:latest  
+podman-compose down && podman-compose up --build -d
+podman logs -f subtitle-api
+podman ps -a
+podman images
+
+enjoy :)
